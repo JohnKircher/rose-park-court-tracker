@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 data/debug_page.html
 data/debug_text.txt
+data/
