@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101820;
+  color: #f4f4f4;
+}
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+h1 {
+  margin-bottom: 8px;
+}
+
+#subtitle {
+  color: #b8c0cc;
+}
+
+.court-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.court-card {
+  background: #1b2a38;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.court-card h2 {
+  margin-top: 0;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.status.booked {
+  background: #4b1111;
+  color: #ffb3b3;
+}
+
+.status.open {
+  background: #0d3b24;
+  color: #9ff0bd;
+}
+
+.slot-section {
+  margin-top: 18px;
+}
+
+.slot-section h3 {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.slot-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.slot {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.slot.booked {
+  background: #7a1e1e;
+}
+
+.slot.available {
+  background: #17683a;
+}
+
+.empty {
+  color: #b8c0cc;
+  font-style: italic;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.controls input,
+.controls button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+.controls button {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.calendar-header button {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.calendar {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 32px auto;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.day-name {
+  text-align: center;
+  font-weight: bold;
+  color: #b8c0cc;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 80px;
+  border-radius: 14px;
+  border: 1px solid #30485c;
+  background: #1b2a38;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px;
+  position: relative;
+}
+
+.calendar-day strong {
+  display: block;
+  font-size: 18px;
+}
+
+.calendar-day:hover {
+  outline: 2px solid #ffffff55;
+}
+
+.calendar-day.empty {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+.calendar-day.loading {
+  background: #665c1e;
+}
+
+.calendar-day.open {
+  background: #17683a;
+}
+
+.calendar-day.booked {
+  background: #7a1e1e;
+}
+
+.calendar-day.selected {
+  outline: 3px solid white;
+}
+
+.calendar-day .label {
+  position: absolute;
+  bottom: 8px;
+  left: 6px;
+  right: 6px;
+  font-size: 12px;
+  text-align: center;
+  color: #f4f4f4;
+  line-height: 1.1;
+}
+
+.progress-container {
+  width: 100%;
+  max-width: 500px;
+  height: 10px;
+  background: #1b2a38;
+  border-radius: 999px;
+  margin: 12px auto 20px auto;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #4aa3ff;
+  transition: width 0.2s ease;
+}
+
+.calendar-day.past {
+  background: #2b333b;
+  color: #8e99a5;
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.progress-container.loading .progress-bar {
+  width: 40%;
+  animation: loadingSlide 1.2s infinite ease-in-out;
+}
+
+@keyframes loadingSlide {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(80%);
+  }
+
+  100% {
+    transform: translateX(260%);
+  }
+}

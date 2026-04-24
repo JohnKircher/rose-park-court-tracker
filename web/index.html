@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rose Park Court Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Rose Park Court Tracker</h1>
+      <p id="subtitle">Pick a date to check court availability.</p>
+      <div id="progressContainer" class="progress-container">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <div class="calendar-header">
+        <button id="prevMonth">←</button>
+        <h2 id="monthTitle"></h2>
+        <button id="nextMonth">→</button>
+      </div>
+    </header>
+
+    <section class="calendar">
+        <div class="calendar-days">
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
+        </div>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+    </section>
+
+    <section id="courtContainer" class="court-grid"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
