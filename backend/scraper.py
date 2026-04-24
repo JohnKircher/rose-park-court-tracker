@@ -7,6 +7,7 @@ import re
 from datetime import datetime, date, time
 from pathlib import Path
 from urllib.parse import urlencode
+from zoneinfo import ZoneInfo
 
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
@@ -33,6 +34,8 @@ PARAMS = {
     "frwebsearch_buttonsearch": "yes",
 }
 
+def eastern_now_iso():
+    return datetime.now(ZoneInfo("America/New_York")).isoformat(timespec="seconds")
 
 def build_url(date_str):
     params = PARAMS.copy()
@@ -172,7 +175,7 @@ def parse_courts(html, date_str):
         })
 
     return {
-        "lastUpdated": datetime.now().isoformat(timespec="seconds"),
+        "lastUpdated": eastern_now_iso(),
         "date": date_str,
         "courts": results,
     }
@@ -279,7 +282,7 @@ def check_month(year, month):
                 results[date_str] = parse_courts(html, date_str)
             except Exception as exc:
                 results[date_str] = {
-                    "lastUpdated": datetime.now().isoformat(timespec="seconds"),
+                    "lastUpdated": eastern_now_iso(),
                     "date": date_str,
                     "error": str(exc),
                     "courts": [],
@@ -288,7 +291,7 @@ def check_month(year, month):
         browser.close()
 
     data = {
-        "lastUpdated": datetime.now().isoformat(timespec="seconds"),
+        "lastUpdated": eastern_now_iso(),
         "year": year,
         "month": month,
         "dates": results,
