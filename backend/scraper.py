@@ -268,12 +268,20 @@ def check_month(year, month):
             });
         """)
 
+
+        MAX_DAYS_TO_CHECK = 8
+        checked_count = 0
         for day_num in range(1, days_in_month + 1):
             current = date(year, month, day_num)
 
             if current < today:
                 continue
 
+            if checked_count >= MAX_DAYS_TO_CHECK:
+                break
+
+            checked_count += 1
+                    
             date_str = current.strftime("%m/%d/%Y")
             url = build_url(date_str)
 
